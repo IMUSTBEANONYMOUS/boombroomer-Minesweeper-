@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+  <style>
+    body{
+      display: flex;
+      margin-top: 13px;
+      font-family: 'Quicksand';
+    }
+
+    #settings{
+      width: 300px;
+      background-color: white;
+      right: 1%;
+      bottom: 10%;
+      padding: 10px 10px;
+      border-radius: 15px;
+      display: none;
+      z-index: 2;
+      flex-direction: column;
+      border: 1px solid black;
+      position: absolute;
+    }
+
+    #gear{
+      /* width: 30px; */
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      right: 1%;
+      bottom: 1%;
+      padding: 10px 10px;
+      z-index: 5;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid black;
+      position: absolute;
+    }
+
+    .howtoplay{
+      margin: 0;
+      margin: 2px 2px;
+    }
+
+    h4{
+      margin: 0px;
+    }
+    h3{
+      margin: 0px;
+      color: red;
+    }
+    #credits{
+      /* margin: 0;
+       */
+      width: 200px;
+      margin: 0px 10px;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 5px 5px;
+      /* width: 500px; */
+    }
+
+    #animation{
+      height: 20px;
+      border: none;
+      background-color: greenyellow;
+      color: black;
+      font-weight: bold;
+    }
+
+    #command{
+      position: absolute;
+      right: 1%;
+      z-index: 1;
+      bottom: 0%;
+    }
+
+    img{
+      width: 300px;
+      height: 300px;
+    }
+
+    input{
+      margin: 2px 2px;
+      height: 30px;
+      width: 93%;
+    }
+  </style>
+  <body>
+    <button id="gear">Settings</button>
+    <div id="command">
+      <img src="art.png">
+    </div>
+    <div id="settings">
+      <h4>Settings: </h4>
+      <button id="animation">Switch Off Animations</button>
+      <div class="howtoplay">
+        <h4>How to play?</h4>
+        In this game u have to click and reveal a tile,
+        Avoid revealing a tile with a mine. To check if there is mine
+        check the numbers given n some tiles to identify them.
+        Flag all the mines before stepping on one.
+        Good luck.
+      </div>
+      <div class="howtoplay">
+        <h4>How to calculate tiles?</h4>
+        If your lucky and u step on a tile without a mine
+        then u might get a number below it. The number states that out of the eight numbers
+        it has there are those number of tiles in its neighbours.
+        Use this information to flag the tiles.
+      </div>
+      <div class="howtoplay">
+        <h4>How you might lose?</h4>
+        If u click on a tile with a mine. Then ur out.
+        Or if u run out of flags , ur not technically out
+        and probably u have flagged the wrong tile so crosscheck it.
+      </div>
+    </div>
+    <div id="credits">
+      <h3>Note:</h3>
+      Note that i dont take any credit 
+      or any ownership for the concept of minesweeper
+      this is actually my personal project and i dont want any credit for
+      the concept of the game. i give all the credit to the original creator of 
+      Minesweeper.
+
+      <h4>And pls play on fullscreen!</h4>
+    </div>
+    <script src="sketch.js"></script>
+    <script>
+      document.querySelector('#gear').addEventListener('click',(e)=>{
+        let settings = document.querySelector('#settings');
+        if (settings.style.display == 'flex'){
+          settings.style.display = 'none'
+        }else{
+          settings.style.display = 'flex';
+        }
+      })
+    </script>
+  </body>
+</html>
