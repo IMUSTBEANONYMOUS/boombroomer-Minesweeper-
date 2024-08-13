@@ -62,8 +62,12 @@ function displayGrid(){
         }
       }
       else{
-        fill(100,200,0);
-        stroke(0,100,0);
+        if ((i + j) % 2 == 0){
+          fill(100,200,0);
+        }else{
+          fill(170,230,0);
+        }
+        noStroke();
         rect(j*width,i*width,width,width);
       }
     }
@@ -123,6 +127,8 @@ function animation(){
   if (animate){
     for (let i = 0; i < particles.length; i++){
       fill(100,200,0);
+      strokeWeight(0.1);
+      stroke(0);
       particles[i][2] -= 0.2;
       particles[i][1] -= particles[i][2];
       rect(particles[i][0],particles[i][1],width,width);
