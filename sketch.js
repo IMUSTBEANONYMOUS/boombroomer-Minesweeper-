@@ -9,6 +9,8 @@ function setup() {
   width = floor(560/20);
   calculateMines();
   particles = [];
+  updateTime = false;
+  gameOver = false;
 }
 
 function calculate(x,y){
@@ -74,6 +76,17 @@ function displayGrid(){
   }
 }
 
+function showRestartButton(){
+  if (gameOver){
+    updateTime = false;
+    document.querySelector('#restart').style.display = 'flex';
+  }
+}
+
+document.querySelector('#restart').addEventListener('click',(e)=>{
+  location.reload();
+})
+
 document.querySelector('#animation').addEventListener('click',(e)=>{
   animate = !animate;
 })
@@ -82,23 +95,33 @@ let animate = false;
 
 function animationState(){
   if (animate){
+    document.querySelector('#animation').innerHTML = 'Switch Off Animations';
     document.querySelector('#animation').style.background = 'greenyellow';
   }
   else{
     document.querySelector('#animation').style.background = 'red';
+    document.querySelector('#animation').innerHTML = 'Switch On Animations';
     document.querySelector('#animation').style.color = 'white';
   }
 }
 
+let gameOver;
+
 function mousePressed(){
   let x = floor(mouseX/width);
   let y = floor(mouseY/width);
-  if (x >= 0 && x < grid.length && y >= 0 && y < grid.length){
-    if (grid[y][x][0] != true){
-      grid[y][x][0] = true;
-      particles.push([x*width,y*width,random(2,5)]);
-      if (grid[y][x][1] == false && grid[y][x][2] == 0){
-        floodFill(x,y);
+  if (gameOver == false){
+    if (x >= 0 && x < grid.length && y >= 0 && y < grid.length){
+      updateTime = true;
+      if (grid[y][x][0] != true){
+        grid[y][x][0] = true;
+        particles.push([x*width,y*width,random(2,5)]);
+        if (grid[y][x][1] == false && grid[y][x][2] == 0){
+          floodFill(x,y);
+        }
+      }
+      if (grid[y][x][1] == true){
+        gameOver = true;
       }
     }
   }
@@ -120,6 +143,17 @@ function floodFill(x,y){
         }
       }
     }
+  }
+}
+
+// adding Time
+
+let updateTime;
+
+function updatingTime(){
+  if (updateTime){
+    let time = millis();
+    document.querySelector('#time').innerHTML = int(time/100)/10;
   }
 }
 
@@ -159,4 +193,12 @@ function draw() {
   displayGrid();
   animation();
   animationState();
+  if (gameOver){
+    fill(0);
+    textSize(30);
+    textAlign(CENTER,CENTER);
+    text('Game Over',560/2,560/2);
+  }
+  showRestartButton();
+  updatingTime();
 }
