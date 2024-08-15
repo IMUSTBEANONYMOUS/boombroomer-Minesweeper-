@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="p5.min.js"></script>
-    <script src="p5.sound.min.js"></script>
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
   </head>
   <style>
     body{
@@ -31,6 +31,25 @@
       z-index: 2;
       flex-direction: column;
       border: 1px solid black;
+      position: absolute;
+    }
+
+    #restart{
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      right: 8%;
+      bottom: 1%;
+      background: red;
+      color: white;
+      padding: 10px 10px;
+      z-index: 5;
+      border-radius: 15px;
+      display: none;
+      border: none;
+      flex-direction: column;
       position: absolute;
     }
 
@@ -96,6 +115,17 @@
       height: 300px;
     }
 
+    #time{
+      position: absolute;
+      right: 1%;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      background-color: white;
+    }
+
     input{
       margin: 2px 2px;
       height: 30px;
@@ -103,7 +133,10 @@
     }
   </style>
   <body>
+    <!-- this is basically needed to play it and dont change it  -->
     <button id="gear">Settings</button>
+    <button id="restart">Restart</button>
+    <div id="time">0.0</div>
     <div id="command">
       <img src="art.png">
     </div>
