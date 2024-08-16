@@ -59,6 +59,9 @@ function displayGrid(){
             text(grid[i][j][2],j*width + width/2,i*width + width/2);
           }
         }else{
+          noStroke();
+          fill(grid[i][j][3],grid[i][j][4],grid[i][j][5]);
+          rect(j*width,i*width,width,width);
           fill(0);
           circle(j*width + width/2,i*width + width/2,width/2);
         }
@@ -179,9 +182,9 @@ function createGrid(){
     for (let j = 0; j < 20; j++){
       let randomNum = random();
       if (randomNum < 0.3){
-        row.push([false,true,0])
+        row.push([false,true,0,int(random(50,255)),int(random(50,255)),int(random(50,255))])
       }else{
-        row.push([false,false,0])
+        row.push([false,false,0,int(random(50,255)),int(random(50,255)),int(random(50,255))])
       }
     }
     grid.push(row);
