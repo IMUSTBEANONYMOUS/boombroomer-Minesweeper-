@@ -27,3 +27,5 @@ The website owner reserves the right to update or modify this disclaimer at any 
 7. Contact Information
 
 For any questions or concerns regarding this disclaimer, please contact us at our discord [yawho69420].
+
+The website link is : https://imustbeanonymous.github.io/boombroomer-Minesweeper-/.
